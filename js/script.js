@@ -48,7 +48,7 @@
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
-  
+  //addd new comment
 
     // create the geometry sphere
     var geometryBackground  = new THREE.SphereGeometry(90, 32, 32);
