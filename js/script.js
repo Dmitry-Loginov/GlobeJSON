@@ -30,6 +30,7 @@
     });
     const sphere = new THREE.Mesh( geometry, material );
 
+    
     const earthOrbit = new THREE.Object3D();
     const labelsOrbit = new THREE.Object3D();
 
