@@ -1,12 +1,12 @@
 	// Our Javascript will go here.
     import { OrbitControls } from "./OrbitControls.js";
     var obj = [];
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 45, window.innerWidth /window.innerHeight, 0.1, 1000 );
     camera.position.z = 1.5;
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
-
     
     const color = 0xffffff;
     var lightBack = new THREE.AmbientLight(color);
@@ -32,12 +32,15 @@
 
     const earthOrbit = new THREE.Object3D();
     const labelsOrbit = new THREE.Object3D();
+
     const labelGeometry = new THREE.SphereGeometry(0.5, 25, 25);
     const labelMaterial = new THREE.MeshLambertMaterial({color : 'red'});
     const labelMesh = new THREE.Mesh(labelGeometry, labelMaterial);
+
     labelMesh.position.y = 15;
     labelMesh.position.z = 15;
     labelMesh.position.x = -5;
+
     obj.push(sphere);
     obj.push(labelMesh);
 
@@ -45,10 +48,9 @@
     earthOrbit.add(sphere);
     labelsOrbit.add(labelMesh);
     earthOrbit.add(labelsOrbit);
+
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
-
-  //addd new comment
 
     // create the geometry sphere
     var geometryBackground  = new THREE.SphereGeometry(90, 32, 32);
@@ -61,7 +63,6 @@
     scene.add(Background);
 
     const controls = new OrbitControls( camera, renderer.domElement );
-
     controls.enableDamping = true;
     controls.dampingFactor = 0.11;
     controls.enableZoom = false;
@@ -77,7 +78,9 @@
         axes
         node.add(axes);
     })
+
     document.body.appendChild( renderer.domElement );
+
     function render() {
 
         // update the picking ray with the camera and mouse position
@@ -96,10 +99,9 @@
             intersects[i].object.material.color.set( 'green' );
     
         }
-    
         renderer.render( scene, camera );
-    
     }
+
     function onMouseMove( event ) {
 
         // calculate mouse position in normalized device coordinates
@@ -107,18 +109,16 @@
         mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
         mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
         render();
-
     }
+
     window.addEventListener( 'mousemove', onMouseMove, false );
     const animate = function () {
         requestAnimationFrame( animate );
-
        // sphere.rotation.y += 0.001;
         controls.update();
         renderer.render( scene, camera );
         onMouseMove();
     };
-    
     
     animate();
     window.requestAnimationFrame(render);
