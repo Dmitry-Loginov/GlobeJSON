@@ -7,7 +7,6 @@
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera( 45, window.innerWidth /window.innerHeight, 0.1, 1000 );
-    camera.position.z = 1.5;
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -17,9 +16,6 @@
     lightBack.position.set(-1, 2, 10);
     scene.add(lightBack);
 
-    var light = new THREE.DirectionalLight( 0xcccccc, 0.5);
-    light.position.set(-3, 10, 0);
-    scene.add(light);
 
     //создание земли
     const geometry = new THREE.SphereGeometry(20, 50, 50);
@@ -41,13 +37,14 @@
     const labelsOrbit = new THREE.Object3D();
 
     //флаг
-    const labelGeometry = new THREE.SphereGeometry(0.5, 25, 25);
+    const labelGeometry = new THREE.PlaneGeometry(1, 1);
     const labelMaterial = new THREE.MeshLambertMaterial({color : 'red'});
     const labelMesh = new THREE.Mesh(labelGeometry, labelMaterial);
+    labelMesh.material.side = THREE.DoubleSide;
 
-    labelMesh.position.y = 15;
-    labelMesh.position.z = 15;
-    labelMesh.position.x = -5;
+    labelMesh.position.y = 20.5;//green
+    labelMesh.position.z = 0;//blue
+    labelMesh.position.x = 0;//red
 
     //заполняем массив объектов
     obj.push(sphere);
@@ -56,6 +53,11 @@
     earthOrbit.add(sphere);
     labelsOrbit.add(labelMesh);
     earthOrbit.add(labelsOrbit);
+
+    //добавляем напрввленный источника света
+    var light = new THREE.DirectionalLight( 0xcccccc, 0.5);
+    light.position.set(-3, 10, 0);
+    scene.add(light);
 
     //распознаватель наведения мыши
     const raycaster = new THREE.Raycaster();
@@ -78,8 +80,7 @@
     controls.enableZoom = false;
 
     //настраиваем камеру и вращение
-    camera.position.set( 5, 5, 50 );
-    camera.position.z = 60;
+    camera.position.set( 20, 40, 45 );
     controls.update();
     
     //добавляем помощников осей
@@ -87,7 +88,6 @@
         const axes = new THREE.AxesHelper(5);
         axes.material.depthTest = false;
         axes.renderOrder = 1;
-        axes
         node.add(axes);
     })
 
@@ -104,9 +104,8 @@
             if(labelsOrbit.children[i].material.color != 'green')
             labelsOrbit.children[i].material.color.set( 'red' );
         }
-        
+
         for ( let i = 0; i < intersects.length; i ++ ) {
-    
             intersects[i].object.material.color.set( 'green' );
         }
         renderer.render( scene, camera );
@@ -126,10 +125,16 @@
     window.addEventListener( 'mousemove', onMouseMove, false );
     const animate = function () {
         requestAnimationFrame( animate );
-       // sphere.rotation.y += 0.001;
+        // sphere.rotation.y += 0.003;
         controls.update();
         renderer.render( scene, camera );
+
+        //метка следит за камерой
+        var vector = new THREE.Vector3( 0, 0, -1 ).applyQuaternion( camera.quaternion ).add( camera.position );
+        labelMesh.lookAt(vector);
+
         onMouseMove();
+        
     };
     
     //итоговая анимация
