@@ -1,10 +1,14 @@
-	// Our Javascript will go here.
+	// импорт библиотек
     import { OrbitControls } from "./OrbitControls.js";
+    //массив объектов
     var obj = [];
 
+    //настраиваем сцену, камеру, визуализатор, освещение
     const scene = new THREE.Scene();
+
     const camera = new THREE.PerspectiveCamera( 45, window.innerWidth /window.innerHeight, 0.1, 1000 );
     camera.position.z = 1.5;
+
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     
@@ -17,10 +21,10 @@
     light.position.set(-3, 10, 0);
     scene.add(light);
 
+    //создание земли
     const geometry = new THREE.SphereGeometry(20, 50, 50);
-    THREE.crossOrigin = "grey";
     const loader = new THREE.TextureLoader();
-    const colorSpec = new THREE.Color('grey');
+    const colorSpec = new THREE.Color(0.8, 0.7, 0.7);
     const material = new THREE.MeshPhongMaterial({
         bumpMap: loader.load("../images/earthbump1k.jpg"),
         map: loader.load('../images/earthmap1k.jpg'),
@@ -30,10 +34,13 @@
     });
     const sphere = new THREE.Mesh( geometry, material );
 
-    
+    //коробка земли
     const earthOrbit = new THREE.Object3D();
+
+    //коробка флагов
     const labelsOrbit = new THREE.Object3D();
 
+    //флаг
     const labelGeometry = new THREE.SphereGeometry(0.5, 25, 25);
     const labelMaterial = new THREE.MeshLambertMaterial({color : 'red'});
     const labelMesh = new THREE.Mesh(labelGeometry, labelMaterial);
@@ -42,36 +49,40 @@
     labelMesh.position.z = 15;
     labelMesh.position.x = -5;
 
+    //заполняем массив объектов
     obj.push(sphere);
     obj.push(labelMesh);
-
     scene.add(earthOrbit);
     earthOrbit.add(sphere);
     labelsOrbit.add(labelMesh);
     earthOrbit.add(labelsOrbit);
 
+    //распознаватель наведения мыши
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
-    // create the geometry sphere
+    // создание звезд
     var geometryBackground  = new THREE.SphereGeometry(90, 32, 32);
-    // create the material, using a texture of startfield
+   
     var materialBackground  = new THREE.MeshBasicMaterial();
     materialBackground.map   = THREE.ImageUtils.loadTexture('../images/galaxy_starfield.png');
     materialBackground.side  = THREE.BackSide;
-    // create the mesh based on geometry and material
+    
     var Background  = new THREE.Mesh(geometryBackground, materialBackground);
     scene.add(Background);
 
+    //возможность вращения
     const controls = new OrbitControls( camera, renderer.domElement );
     controls.enableDamping = true;
     controls.dampingFactor = 0.11;
     controls.enableZoom = false;
 
+    //настраиваем камеру и вращение
     camera.position.set( 5, 5, 50 );
     camera.position.z = 60;
     controls.update();
     
+    //добавляем помощников осей
     obj.forEach((node) => {
         const axes = new THREE.AxesHelper(5);
         axes.material.depthTest = false;
@@ -80,29 +91,28 @@
         node.add(axes);
     })
 
+    //рендерим
     document.body.appendChild( renderer.domElement );
 
     function render() {
 
-        // update the picking ray with the camera and mouse position
         raycaster.setFromCamera( mouse, camera );
     
-        // calculate objects intersecting the picking ray
         const intersects = raycaster.intersectObjects( labelsOrbit.children );
         
         for ( let i = 0; i < labelsOrbit.children.length; i ++ ) {
             if(labelsOrbit.children[i].material.color != 'green')
             labelsOrbit.children[i].material.color.set( 'red' );
-    
         }
+        
         for ( let i = 0; i < intersects.length; i ++ ) {
     
             intersects[i].object.material.color.set( 'green' );
-    
         }
         renderer.render( scene, camera );
     }
 
+    //для отображения наведения мыши
     function onMouseMove( event ) {
 
         // calculate mouse position in normalized device coordinates
@@ -112,6 +122,7 @@
         render();
     }
 
+    //анимация вращения мыши
     window.addEventListener( 'mousemove', onMouseMove, false );
     const animate = function () {
         requestAnimationFrame( animate );
@@ -121,5 +132,6 @@
         onMouseMove();
     };
     
+    //итоговая анимация
     animate();
     window.requestAnimationFrame(render);
