@@ -15,8 +15,8 @@
     var lightBack = new THREE.AmbientLight(color);
     lightBack.position.set(-1, 2, 10);
     scene.add(lightBack);
-
-
+     
+      
     //создание земли
     const geometry = new THREE.SphereGeometry(20, 50, 50);
     const loader = new THREE.TextureLoader();
