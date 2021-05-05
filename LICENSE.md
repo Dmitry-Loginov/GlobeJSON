@@ -1,6 +1,4 @@
-This project was created using https://github.com/jdomingu/ThreeGeoJSON and https://github.com/mrdoob/three.js/
-Loginov Dmitry
-All rights reserved.
+This project was created using https://github.com/jdomingu/ThreeGeoJSON and https://github.com/mrdoob/three.js/ Loginov Dmitry All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
