@@ -1,0 +1,134 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Оксордский университет"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.2581384181976318,
+          51.759101415216016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"Name":"Стенфорд"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.17032909393312,
+          37.42751882891649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"Name":"Гарвард, Бостон"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.10349416732788,
+          42.3367976196384
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"Name":"Гарвард, Кембридж"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.11577063798903,
+          42.37677368736404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"Name":"California"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.12542915344237,
+          34.13717026779239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"Name":"Массачусетс"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.09416007995605,
+          42.358892748470986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Кембридж, Англия"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.11547446250915526,
+          52.202619518122084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "University of California"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.25858986377715,
+          37.87203533128728
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Йельский университет"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.92235776782036,
+          41.3164003679006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "Name": "Пристонский университет"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.6552324295044,
+          40.34306067027912
+        ]
+      }
+    },
+	{
+      "type": "Feature",
+      "properties": { "Name": "Чикаго"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.59963750839232,
+          41.79081678328433
+        ]
+      }
+    }
+  ]
+}
