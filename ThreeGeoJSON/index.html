@@ -61,9 +61,7 @@
             });
 
             $.getJSON("test_geojson/univesrity.json", function(data) {
-                drawThreeGeo(data, 30.3, 'sphere', {
-                    color: 'red'
-                }, planet);
+                drawThreeGeo(data, 30.3, 'sphere', {color: 'red'}, planet);
             });
             //Set the camera position
             camera.position.z = 8
@@ -74,29 +72,50 @@
             planet.rotation.z += -0.4;
             //Enable controls
             var controls = new THREE.TrackballControls(camera);
+            
 
+            //анимация вращения мыши
             //Render the image
             function render() {
-                controls.update();
+                raycaster.setFromCamera( mouse, camera );
                 requestAnimationFrame(render);
                 
-                // raycaster.setFromCamera( mouse, camera );
     
-                // const intersects = raycaster.intersectObjects( labelsOrbit.children );
+                const intersects = raycaster.intersectObjects( planet.children );
                 
-                // for ( let i = 0; i < labelsOrbit.children.length; i ++ ) {
-                //     if(labelsOrbit.children[i].material.color != 'green')
-                //     labelsOrbit.children[i].material.color.set( 'red' );
-                // }
+                for ( let i = 0; i < planet.children.length; i ++ ) {
+                    if(planet.children[i].material.color != 'green')
+                    planet.children[i].material.color.set( 'red' );
+                }
 
-                // for ( let i = 0; i < intersects.length; i ++ ) {
-                //     intersects[i].object.material.color.set( 'green' );
-                // }
+                for ( let i = 0; i < intersects.length; i ++ ) {
+                    intersects[i].object.material.color.set( 'green' );
+                }
 
                 renderer.render( scene, camera );
 
-        }
-        render();
+            }
+            function onMouseMove( event ) {
+                // calculate mouse position in normalized device coordinates
+                // (-1 to +1) for both components
+                mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+                mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;             
+                render();
+            }
+        
+            window.addEventListener( 'mousemove', onMouseMove, false );
+
+            const animate = function () {
+            requestAnimationFrame( animate );
+            // sphere.rotation.y += 0.003;
+            controls.update();
+            renderer.render( scene, camera );
+
+            onMouseMove();
+            };
+            
+            animate();
+            window.requestAnimationFrame(render);
         </script>
 	</body>
 </html>

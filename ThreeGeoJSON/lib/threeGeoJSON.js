@@ -30,6 +30,7 @@ function drawThreeGeo(json, radius, shape, materalOptions, container) {
             for (var point_num = 0; point_num < json_geom[geom_num].coordinates.length; point_num++) {
                 convertCoordinates(json_geom[geom_num].coordinates[point_num], radius);
                 drawParticle(x_values[0], y_values[0], z_values[0], materalOptions);
+                
             }
 
         } else if (json_geom[geom_num].type == 'LineString') {
@@ -92,7 +93,7 @@ function drawThreeGeo(json, radius, shape, materalOptions, container) {
         } else {
             throw new Error('The geoJSON is not valid.');
         }
-        //alert(geometry_array.length);
+        //  alert(geometry_array[0]);
         return geometry_array;
     }
 
