@@ -21,7 +21,8 @@
             //New scene and camera
             var scene = new THREE.Scene();
             var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.5, 1000);
-
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
             //New Renderer
             var renderer = new THREE.WebGLRenderer();
             renderer.setSize(window.innerWidth, window.innerHeight);
@@ -55,7 +56,7 @@
             //Draw the GeoJSON
             $.getJSON("test_geojson/countries.json", function(data) {
                 drawThreeGeo(data, 30, 'sphere', {
-                    color: 'red'
+                    color: 'blue'
                 }, planet);
             });
 
@@ -78,14 +79,24 @@
             function render() {
                 controls.update();
                 requestAnimationFrame(render);
-                renderer.render(scene, camera);
-            }
-            document.addEventListener("keypress", function(){
-                alert("Y" + camera.position.y);
-                alert("X" + camera.position.x);
-                alert("Z" + camera.position.z);
-            });
-            render();
+                
+                // raycaster.setFromCamera( mouse, camera );
+    
+                // const intersects = raycaster.intersectObjects( labelsOrbit.children );
+                
+                // for ( let i = 0; i < labelsOrbit.children.length; i ++ ) {
+                //     if(labelsOrbit.children[i].material.color != 'green')
+                //     labelsOrbit.children[i].material.color.set( 'red' );
+                // }
+
+                // for ( let i = 0; i < intersects.length; i ++ ) {
+                //     intersects[i].object.material.color.set( 'green' );
+                // }
+
+                renderer.render( scene, camera );
+
+        }
+        render();
         </script>
 	</body>
 </html>
