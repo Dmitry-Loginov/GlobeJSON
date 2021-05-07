@@ -1,4 +1,4 @@
-import * as THREE from "./three.module.js"
+import * as THREE from "./three.module.js";
 import { OrbitControls } from "./OrbitControls.js";
 import { drawThreeGeo } from "./threeGeoJSON.js";
             //New scene and camera
@@ -24,28 +24,30 @@ import { drawThreeGeo } from "./threeGeoJSON.js";
             });
             var sphere = new THREE.Mesh(geometry, material);
             sphere.rotation.x += 1.58;
-            planet.add(sphere);
-
+            
             scene.add(planet);
             var light = new THREE.DirectionalLight( 0xcccccc, 0.5);
             light.position.set(10, 20, 10);
             scene.add(light);
-
+            
             const color = 0xffffff;
             var lightBack = new THREE.AmbientLight(color);
             lightBack.position.set(-2, 2, 10);
             scene.add(lightBack);
-
+            var container = new THREE.Object3D();
+            planet.add(container);
+            planet.rotation.x += -1.55;
+            planet.rotation.z += -0.4;
+            
             $.getJSON("test_geojson/univesrity.json", function(data) {
-                drawThreeGeo(data, 30.3, 'sphere', {color: 'red'}, planet);
+                drawThreeGeo(data, 30.3, 'sphere', {color: 'red'}, container);
             });
+            planet.add(sphere);
             //Set the camera position
             camera.position.z = 8;
             camera.position.y = 19;
             camera.position.x = 59;
 
-            planet.rotation.x += -1.55;
-            planet.rotation.z += -0.4;
 
             //анимация вращения мыши
             //Render the image
@@ -59,18 +61,18 @@ import { drawThreeGeo } from "./threeGeoJSON.js";
             controls.enableZoom = false;
             controls.update();
             function render() {
-                // raycaster.setFromCamera( mouse, camera );
+                raycaster.setFromCamera( mouse, camera );
 
-                // const intersects = raycaster.intersectObjects( planet.children );
+                const intersects = raycaster.intersectObjects( container.children );
                 
-                // for ( let i = 0; i < planet.children.length; i ++ ) {
-                //     if(planet.children[i].material.color != 'green')
-                //     planet.children[i].material.color.set( 'red' );
-                // }
+                for ( let i = 0; i < container.children.length; i ++ ) {
+                    if(container.children[i].material.color != 'green')
+                    container.children[i].material.color.set( 'red' );
+                }
 
-                // for ( let i = 0; i < intersects.length; i ++ ) {
-                //     intersects[i].object.material.color.set( 'green' );
-                // }
+                for ( let i = 0; i < intersects.length; i ++ ) {
+                    intersects[i].object.material.color.set( 'green' );
+                }
 
                 renderer.render( scene, camera );
 
@@ -78,8 +80,8 @@ import { drawThreeGeo } from "./threeGeoJSON.js";
             function onMouseMove( event ) {
                 // calculate mouse position in normalized device coordinates
                 // (-1 to +1) for both components
-                mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-                mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;             
+                mouse.x = ( event.clientX / window.innerWidth ) * 2-1;
+                mouse.y = - ( event.clientY / window.innerHeight ) * 2+1;             
                 render();
             }
         
@@ -90,8 +92,6 @@ import { drawThreeGeo } from "./threeGeoJSON.js";
             // sphere.rotation.y += 0.003;
             controls.update();
             renderer.render( scene, camera );
-
-            onMouseMove();
             };
             
             animate();

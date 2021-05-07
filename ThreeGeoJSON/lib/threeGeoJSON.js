@@ -4,13 +4,25 @@ Iterates through the latitude and longitude values, converts the values to XYZ c
 and draws the geoJSON geometries.
 
 */
-import * as THREE from "./three.module.js"; 
+import * as THREE from "./three.module.js";
+// class LabelPoint extends THREE.Points {
+
+//     constructor(geometry, material, message){
+//         super(geometry, material);
+//         this.message = message;
+//         function ShowMessage() {
+//             alert(this.message);
+//         }
+//     }
+// }
+
 export function drawThreeGeo(json, radius, shape, materalOptions, container) {
     container = container || window.scene;
 
     var x_values = [];
     var y_values = [];
     var z_values = [];
+    
 
     var json_geom = createGeometryArray(json);
     //An array to hold the feature geometries.
