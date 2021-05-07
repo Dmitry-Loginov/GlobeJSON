@@ -2,11 +2,10 @@
     <head>
         <title>ThreeGeoJSON Demo</title>
 
-        <script src="lib/threeGeoJSON.js"></script>
-
+        
         <!-- Three.js library, movement controls, and jquery for the geojson-->
         <script src="lib/three.js"></script>
-        
+        <script src="lib/threeGeoJSON.js"></script>
         <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     </head>
     <body>
@@ -18,7 +17,7 @@
             }
         </style>
 		<script type="module">
-            import { OrbitControls } from "./OrbitControls.js";
+            import { OrbitControls } from "./lib/OrbitControls.js";
             //New scene and camera
             var scene = new THREE.Scene();
             var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.5, 1000);
