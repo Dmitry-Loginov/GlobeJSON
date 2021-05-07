@@ -208,13 +208,18 @@ function drawThreeGeo(json, radius, shape, materalOptions, container) {
     }
 
     function drawParticle(x, y, z, options) {
-        var particle_geom = new THREE.Geometry();
-        particle_geom.vertices.push(new THREE.Vector3(x, y, z));
+        const vertices = [];
+        vertices.push( x, y, z );
+        var particle_geom = new THREE.BufferGeometry();
+        particle_geom.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
 
-        var particle_material = new THREE.ParticleSystemMaterial(options);
+        var particle_material = new THREE.PointsMaterial(options);
 
-        var particle = new THREE.ParticleSystem(particle_geom, particle_material);
+        var particle = new THREE.Points(particle_geom, particle_material);
         container.add(particle);
+        // particle.position.x = x;
+        // particle.position.y = y;
+        // particle.position.z = z;
 
         clearArrays();
     }
