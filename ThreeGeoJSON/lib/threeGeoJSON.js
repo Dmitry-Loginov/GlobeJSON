@@ -5,16 +5,24 @@ and draws the geoJSON geometries.
 
 */
 import * as THREE from "./three.module.js";
-// class LabelPoint extends THREE.Points {
+import {clientx, clienty} from "./script.js";
+class LabelPoints extends THREE.Points {
 
-//     constructor(geometry, material, message){
-//         super(geometry, material);
-//         this.message = message;
-//         function ShowMessage() {
-//             alert(this.message);
-//         }
-//     }
-// }
+    constructor(geometry, material, message, image){
+        super(geometry, material);
+        this.message = message;
+        this.image = image;
+    }
+
+    ShowMessage() {
+        $(".popup").css({"left" : clientx, "top" : clienty-10});
+        // alert(this.message);
+        var popup = document.getElementById("myPopup");
+        var img = "<img src=\"./images/" + this.image + "\" width=\"40px\" height=\"40px\" style=\"float: left; margin: 0px 0px 0px 5px;\">";
+        popup.innerHTML = img + this.message;
+        popup.classList.toggle("show");
+    }
+}
 
 export function drawThreeGeo(json, radius, shape, materalOptions, container) {
     container = container || window.scene;
@@ -36,7 +44,7 @@ export function drawThreeGeo(json, radius, shape, materalOptions, container) {
 
         if (json_geom[geom_num].type == 'Point') {
             convertCoordinates(json_geom[geom_num].coordinates, radius);
-            drawParticle(x_values[0], y_values[0], z_values[0], materalOptions);
+            drawParticle(x_values[0], y_values[0], z_values[0], materalOptions, geom_num);
 
         } else if (json_geom[geom_num].type == 'MultiPoint') {
             for (var point_num = 0; point_num < json_geom[geom_num].coordinates.length; point_num++) {
@@ -219,7 +227,7 @@ export function drawThreeGeo(json, radius, shape, materalOptions, container) {
         y_values.push((lon / 180) * radius);
     }
 
-    function drawParticle(x, y, z, options) {
+    function drawParticle(x, y, z, options, geom_num = 0) {
         const vertices = [];
         vertices.push( x, y, z );
         var particle_geom = new THREE.BufferGeometry();
@@ -227,12 +235,8 @@ export function drawThreeGeo(json, radius, shape, materalOptions, container) {
 
         var particle_material = new THREE.PointsMaterial(options);
 
-        var particle = new THREE.Points(particle_geom, particle_material);
+        var particle = new LabelPoints(particle_geom, particle_material, json_geom[geom_num].name, json_geom[geom_num].image);
         container.add(particle);
-        // particle.position.x = x;
-        // particle.position.y = y;
-        // particle.position.z = z;
-
         clearArrays();
     }
 

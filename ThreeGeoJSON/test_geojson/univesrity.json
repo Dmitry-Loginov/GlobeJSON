@@ -3,10 +3,10 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {
-        "Name": "Оксордский университет"
-      },
+      "properties": { },
       "geometry": {
+        "name": "Оксордский университет",
+        "image" : "oxford.jpg",
         "type": "Point",
         "coordinates": [
           -1.2581384181976318,
@@ -16,8 +16,10 @@
     },
     {
       "type": "Feature",
-      "properties": {"Name":"Стенфорд"},
+      "properties": {},
       "geometry": {
+        "name":"Стенфордский университет",
+        "image" : "stenford.jpg",
         "type": "Point",
         "coordinates": [
           -122.17032909393312,
@@ -27,8 +29,10 @@
     },
     {
       "type": "Feature",
-      "properties": {"Name":"Гарвард, Бостон"},
+      "properties": {},
       "geometry": {
+        "name":"Гарвардский университет, Бостон",
+        "image" : "harward.jpg",
         "type": "Point",
         "coordinates": [
           -71.10349416732788,
@@ -38,19 +42,10 @@
     },
     {
       "type": "Feature",
-      "properties": {"Name":"Гарвард, Кембридж"},
+      "properties": {},
       "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.11577063798903,
-          42.37677368736404
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {"Name":"California"},
-      "geometry": {
+        "name":"Калифорнийский технологический институт",
+        "image" : "caltech.jpg",
         "type": "Point",
         "coordinates": [
           -118.12542915344237,
@@ -60,8 +55,10 @@
     },
     {
       "type": "Feature",
-      "properties": {"Name":"Массачусетс"},
+      "properties": {},
       "geometry": {
+        "name":"Массачусетский технологический институт",
+        "image" : "massatchusets.jpg",
         "type": "Point",
         "coordinates": [
           -71.09416007995605,
@@ -71,10 +68,10 @@
     },
     {
       "type": "Feature",
-      "properties": {
-        "Name": "Кембридж, Англия"
-      },
+      "properties": {},
       "geometry": {
+        "name": "Университет в Кембридже, Англия",
+        "image" : "kembridg.jpg",
         "type": "Point",
         "coordinates": [
           0.11547446250915526,
@@ -84,10 +81,10 @@
     },
     {
       "type": "Feature",
-      "properties": {
-        "Name": "University of California"
-      },
+      "properties": {},
       "geometry": {
+        "name": "Калифорнийский университет",
+        "image" : "calberkli.jpg",
         "type": "Point",
         "coordinates": [
           -122.25858986377715,
@@ -97,10 +94,10 @@
     },
     {
       "type": "Feature",
-      "properties": {
-        "Name": "Йельский университет"
-      },
+      "properties": {},
       "geometry": {
+        "name": "Йельский университет",
+        "image" : "yale.jpg",
         "type": "Point",
         "coordinates": [
           -72.92235776782036,
@@ -110,8 +107,10 @@
     },
     {
       "type": "Feature",
-      "properties": { "Name": "Пристонский университет"},
+      "properties": { },
       "geometry": {
+        "name": "Пристонский университет",
+        "image" : "pricenton.jpg",
         "type": "Point",
         "coordinates": [
           -74.6552324295044,
@@ -121,8 +120,10 @@
     },
 	{
       "type": "Feature",
-      "properties": { "Name": "Чикаго"},
+      "properties": { },
       "geometry": {
+        "name": "Университет в Чикаго",
+        "image" : "chikago.jpg",
         "type": "Point",
         "coordinates": [
           -87.59963750839232,

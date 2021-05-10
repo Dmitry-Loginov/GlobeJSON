@@ -4,9 +4,11 @@
 
         
         <!-- Three.js library, movement controls, and jquery for the geojson-->
-        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <!-- <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script type="module" src="lib/threeGeoJSON.js"></script>
         <script type="module" src="lib/script.js"></script>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     </head>
     <body>
         <style>
@@ -15,6 +17,51 @@
                 margin: 0;
                 overflow: hidden;
             }
+            .popup {
+                position: absolute;
+                display: inline;
+                cursor: default;
+                top: 150px;
+                left: 150px;
+            }
+
+            /* The actual popup (appears on top) */
+            .popup .popuptext {
+                visibility: hidden;
+                width: 160px;
+                background-color: #555;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 8px 0;
+                position: absolute;
+                z-index: 1;
+                bottom: 125%;
+                left: 50%;
+                margin-left: -80px;
+            }
+
+            /* Toggle this class when clicking on the popup container (hide and show the popup) */
+            .popup .show {
+                visibility: visible;
+                -webkit-animation: fadeIn 1s;
+                animation: fadeIn 1s
+            }
+            
+            /* Add animation (fade in the popup) */
+            @-webkit-keyframes fadeIn {
+                from {opacity: 0;}
+                to {opacity: 1;}
+            }
+
+            @keyframes fadeIn {
+                from {opacity: 0;}
+                to {opacity:1 ;}
+            }
         </style>
+          <script type="module">
+            // When the user clicks on <div>, open the popup
+            </script>
+        <div class="popup"><span class="popuptext" id="myPopup"> Университет</span></div>
 	</body>
 </html>
