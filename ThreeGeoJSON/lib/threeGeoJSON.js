@@ -12,15 +12,27 @@ class LabelPoints extends THREE.Points {
         super(geometry, material);
         this.message = message;
         this.image = image;
+        this.showingMessage = false;
     }
+    
 
     ShowMessage() {
+        this.showingMessage = true;
         $(".popup").css({"left" : clientx, "top" : clienty-10});
         // alert(this.message);
         var popup = document.getElementById("myPopup");
         var img = "<img src=\"./images/" + this.image + "\" width=\"40px\" height=\"40px\" style=\"float: left; margin: 0px 0px 0px 5px;\">";
         popup.innerHTML = img + this.message;
-        popup.classList.toggle("show");
+        popup.classList.add("show");
+        // alert(this.showingMessage + " есть " + this.message);
+    }
+
+    HideMessage(){
+        this.showingMessage = false;
+        var popup = document.getElementById("myPopup");
+        popup.classList.remove("show");
+        // alert(this.showingMessage + " нет " + this.message);
+
     }
 }
 
@@ -227,13 +239,20 @@ export function drawThreeGeo(json, radius, shape, materalOptions, container) {
         y_values.push((lon / 180) * radius);
     }
 
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+      }
+    
+    
+
     function drawParticle(x, y, z, options, geom_num = 0) {
         const vertices = [];
         vertices.push( x, y, z );
         var particle_geom = new THREE.BufferGeometry();
         particle_geom.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
 
-        var particle_material = new THREE.PointsMaterial(options);
+        var colors = ['red', 'white', 'orange', 'pink', 'yellow'];
+        var particle_material = new THREE.PointsMaterial({color: colors[getRandomInt(7)]});
 
         var particle = new LabelPoints(particle_geom, particle_material, json_geom[geom_num].name, json_geom[geom_num].image);
         container.add(particle);

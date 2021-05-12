@@ -18,6 +18,19 @@
       "type": "Feature",
       "properties": {},
       "geometry": {
+        "name": "Университет в Кембридже, Англия",
+        "image" : "kembridg.jpg",
+        "type": "Point",
+        "coordinates": [
+          0.11547446250915526,
+          52.202619518122084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
         "name":"Стенфордский университет",
         "image" : "stenford.jpg",
         "type": "Point",
@@ -63,19 +76,6 @@
         "coordinates": [
           -71.09416007995605,
           42.358892748470986
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "name": "Университет в Кембридже, Англия",
-        "image" : "kembridg.jpg",
-        "type": "Point",
-        "coordinates": [
-          0.11547446250915526,
-          52.202619518122084
         ]
       }
     },
