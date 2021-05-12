@@ -80,14 +80,13 @@ import { drawThreeGeo } from "./threeGeoJSON.js";
                         rotate = false;
                     }
                     catch{
-                        show = false;
-                        rotate = true;
-                        onClick();
+                        
 
                     }
                    
                 }
                 else{
+                    rotate = true;
                     onClick();
                 }
                 renderer.render( scene, camera );
@@ -117,7 +116,7 @@ import { drawThreeGeo } from "./threeGeoJSON.js";
             if(rotate)
                 planet.rotation.z += 0.001;
             else
-                planet.rotation += 0;
+                planet.rotation.z += 0;
             controls.update();
             renderer.render( scene, camera );
             };
