@@ -56,6 +56,14 @@ $.getJSON("test_geojson/univesrity.json", function(data) {
     drawThreeGeo(data, 30.3, 'sphere', {color: colors[getRandomInt(7)]}, container);
 });
 
+var skyGeometry = new THREE.SphereGeometry(90, 50, 50);
+var skyMaterial = new THREE.MeshBasicMaterial({
+    map:  loader.load("images/galaxy_starfield.png"),
+    side: THREE.BackSide,
+});
+var sky = new THREE.Mesh(skyGeometry, skyMaterial);
+scene.add(sky);
+
 planet.add(sphere);
 //Set the camera position
 camera.position.z = 8;
@@ -111,6 +119,19 @@ function onMouseMove( event ) {
 
 
 window.addEventListener( 'mousemove', onMouseMove, false );
+// window.addEventListener('click', Click, false);
+
+// function Click(){
+
+//     raycaster.setFromCamera( mouse, camera );
+//     const intersects = raycaster.intersectObjects( container.children );
+//     // try{
+//         intersects[0].object.ClickPoint();
+//     // }
+//     // catch{
+        
+//     // }
+// }
 
 const animate = function () {
 requestAnimationFrame( animate );

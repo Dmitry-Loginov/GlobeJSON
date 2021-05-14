@@ -15,6 +15,11 @@ class LabelPoints extends THREE.Points {
         this.showingMessage = false;
     }
     
+    // ClickPoint(){
+    //     this.showingMessage = false;
+    //     var popup = document.getElementsByClassName("popupWindow")[0];
+    //     popup.classList.add("show");
+    // }
 
     ShowMessage() {
         this.showingMessage = true;
@@ -43,7 +48,6 @@ export function drawThreeGeo(json, radius, shape, materalOptions, container) {
     var y_values = [];
     var z_values = [];
     
-
     var json_geom = createGeometryArray(json);
     //An array to hold the feature geometries.
     var convertCoordinates = getConversionFunctionName(shape);

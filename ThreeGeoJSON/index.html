@@ -8,6 +8,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script type="module" src="lib/threeGeoJSON.js"></script>
         <script type="module" src="lib/script.js"></script>
+        <link rel="stylesheet" href="stylepopup.css">
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     </head>
     <body>
@@ -19,7 +20,7 @@
             }
             .popup {
                 position: absolute;
-                display: inline;
+                display: inline-block;
                 cursor: default;
                 top: 150px;
                 left: 150px;
@@ -28,7 +29,7 @@
             /* The actual popup (appears on top) */
             .popup .popuptext {
                 visibility: hidden;
-                width: 160px;
+                width: 170px;
                 background-color: #555;
                 color: #fff;
                 text-align: center;
@@ -62,6 +63,30 @@
           <script type="module">
             // When the user clicks on <div>, open the popup
             </script>
-        <div class="popup"><span class="popuptext" id="myPopup"> Университет</span></div>
+        <div class="popup">
+            <span class="popuptext" id="myPopup"> Университет</span>
+        </div>
+
+        <div class="popupWindow">
+            <div class="header">
+                <div class="cross"></div>
+            </div>
+            <div class="footer">
+                <div class="popupTitle">
+                    <div class="popupText">Оксфордский университет</div>
+                    <div class="popupCity">Оксфорд</div>
+                    <div class="popupIcon">  </div>
+                </div>
+                <div class="popupWindowText" id="myPopupWindow">
+                    К услугам студентов больше 300 кружков по интересам. Большое внимание в Оксфорде уделяется спорту, как престижному и полезному виду отдыха.
+                </div>
+            </div>
+        </div>
+        
+        <!-- картинка, крестик -->
+        <!-- заголовок, логотип страны -->
+        <!-- название города -->
+        <!-- краткое описание -->
+
 	</body>
 </html>
