@@ -10,7 +10,7 @@
     width: 220px;
     height: 300px;
     border-radius: 10px;
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 .popupWindow .header{
     position: relative;
