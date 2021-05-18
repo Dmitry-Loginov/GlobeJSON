@@ -4,22 +4,38 @@ Iterates through the latitude and longitude values, converts the values to XYZ c
 and draws the geoJSON geometries.
 
 */
+
 import * as THREE from "./three.module.js";
 import {clientx, clienty} from "./script.js";
 class LabelPoints extends THREE.Points {
 
-    constructor(geometry, material, message, image){
+    constructor(geometry, material, message, image, vertices){
         super(geometry, material);
         this.message = message;
         this.image = image;
         this.showingMessage = false;
+        this.showingPopup = false;
+        this.vertices = vertices;
     }
     
-    // ClickPoint(){
-    //     this.showingMessage = false;
-    //     var popup = document.getElementsByClassName("popupWindow")[0];
-    //     popup.classList.add("show");
-    // }
+    ShowPopup(){
+        if(!this.showingPopup)
+        {
+            this.HideMessage();
+            var popup = document.getElementsByClassName("popupWindow")[0];
+            popup.setAttribute('style', 'visibility: show;');
+            this.showingPopup = true;
+            alert(this.vertices);
+        }
+    }
+
+    HidePopup(){
+        if(this.showingPopup){
+            var popup = document.getElementsByClassName("popupWindow")[0];
+            popup.setAttribute('style', 'visibility: hidden;');
+            this.showingPopup = false;
+        }
+    }
 
     ShowMessage() {
         this.showingMessage = true;
@@ -60,12 +76,12 @@ export function drawThreeGeo(json, radius, shape, materalOptions, container) {
 
         if (json_geom[geom_num].type == 'Point') {
             convertCoordinates(json_geom[geom_num].coordinates, radius);
-            drawParticle(x_values[0], y_values[0], z_values[0], materalOptions, geom_num);
+            drawParticle(x_values[0], y_values[0], z_values[0], geom_num);
 
         } else if (json_geom[geom_num].type == 'MultiPoint') {
             for (var point_num = 0; point_num < json_geom[geom_num].coordinates.length; point_num++) {
                 convertCoordinates(json_geom[geom_num].coordinates[point_num], radius);
-                drawParticle(x_values[0], y_values[0], z_values[0], materalOptions);
+                drawParticle(x_values[0], y_values[0], z_values[0]);
                 
             }
 
@@ -249,16 +265,16 @@ export function drawThreeGeo(json, radius, shape, materalOptions, container) {
     
     
 
-    function drawParticle(x, y, z, options, geom_num = 0) {
+    function drawParticle(x, y, z, geom_num = 0) {
         const vertices = [];
         vertices.push( x, y, z );
         var particle_geom = new THREE.BufferGeometry();
         particle_geom.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
 
-        var colors = ['red', 'white', 'orange', 'pink', 'yellow'];
-        var particle_material = new THREE.PointsMaterial({color: colors[getRandomInt(7)]});
+        var colors = ['red', 'white', 'orange', 'pink', 'yellow', 'cyan', 'brown', 'purple'];
+        var particle_material = new THREE.PointsMaterial({color: colors[getRandomInt(8)]});
 
-        var particle = new LabelPoints(particle_geom, particle_material, json_geom[geom_num].name, json_geom[geom_num].image);
+        var particle = new LabelPoints(particle_geom, particle_material, json_geom[geom_num].name, json_geom[geom_num].image, vertices);
         container.add(particle);
         clearArrays();
     }

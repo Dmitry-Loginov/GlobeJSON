@@ -81,8 +81,10 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.11;
 controls.enableZoom = false;
 controls.update();
-var rotate = true;
+export var rotate;
+rotate = true;
 var label = null;
+var popup = null;
 
 function render() {
     raycaster.setFromCamera( mouse, camera );
@@ -101,8 +103,12 @@ function render() {
         }
     }
     catch{
-        label?.object.HideMessage();
-        rotate = true;
+        try{
+            label?.object.HideMessage();
+            if(!popup.showingPopup)
+                rotate = true;
+        }
+        catch{}
     }
     renderer.render( scene, camera );
 }
@@ -119,26 +125,36 @@ function onMouseMove( event ) {
 
 
 window.addEventListener( 'mousemove', onMouseMove, false );
-// window.addEventListener('click', Click, false);
+window.addEventListener('click', Click, false);
 
-// function Click(){
+function Click(){
 
-//     raycaster.setFromCamera( mouse, camera );
-//     const intersects = raycaster.intersectObjects( container.children );
-//     // try{
-//         intersects[0].object.ClickPoint();
-//     // }
-//     // catch{
-        
-//     // }
-// }
+    raycaster.setFromCamera( mouse, camera );
+    const intersects = raycaster.intersectObjects( container.children );
+    try{
+        popup = intersects[0].object;
+        if(!popup.showingPopup){
+            intersects[0].object.ShowPopup();
+            rotate = false;
+            alert(intersects[0].object.vertices);
+            alert(intersects[0].object.position.x);
+
+        }
+    }
+    catch{
+        if(popup != null){
+            popup.HidePopup();
+            rotate = true;
+        }
+    }
+}
 
 const animate = function () {
 requestAnimationFrame( animate );
-if(rotate)
-    planet.rotation.z += 0.001;
-else
-    planet.rotation.z += 0;
+// if(rotate)
+//     planet.rotation.z += 0.001;
+// else
+//     planet.rotation.z += 0;
 controls.update();
 renderer.render( scene, camera );
 };
