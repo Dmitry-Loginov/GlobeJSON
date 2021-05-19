@@ -141,14 +141,19 @@ function Click(){
             // console.log(camera.position.x);
             // console.log(camera.position.y);
             // console.log(camera.position.z);
-            console.log(intersects);
-            console.log(camera);
+            // console.log(intersects);
+            // console.log(camera);
             //camera.position.x = camera.position.x + 20;
 
             // camera.position.x = intersects[0].point.x;
             //  camera.position.x = camera.position.y + (intersects[0].point.y);
             //  camera.position.z = camera.position.x + (intersects[0].point.x);
             //  camera.position.x = camera.position.x + (-camera.position.x + intersects[0].point.x);
+            // alert(mouse.x + " " + mouse.y);
+            // camera.position.x = mouse.x;
+            // camera.position.y = mouse.y;
+            // camera.position.z = camera.position.z + 5;            
+
             
         }
     }
