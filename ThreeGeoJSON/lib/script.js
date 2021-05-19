@@ -136,9 +136,20 @@ function Click(){
         if(!popup.showingPopup){
             intersects[0].object.ShowPopup();
             rotate = false;
-            alert(intersects[0].object.vertices);
-            alert(intersects[0].object.position.x);
+            // alert(intersects[0].object.vertices);
+            // alert(intersects[0].object.position.x);
+            // console.log(camera.position.x);
+            // console.log(camera.position.y);
+            // console.log(camera.position.z);
+            console.log(intersects);
+            console.log(camera);
+            //camera.position.x = camera.position.x + 20;
 
+            // camera.position.x = intersects[0].point.x;
+            //  camera.position.x = camera.position.y + (intersects[0].point.y);
+            //  camera.position.z = camera.position.x + (intersects[0].point.x);
+            //  camera.position.x = camera.position.x + (-camera.position.x + intersects[0].point.x);
+            
         }
     }
     catch{

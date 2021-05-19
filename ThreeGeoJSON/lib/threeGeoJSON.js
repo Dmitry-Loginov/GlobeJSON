@@ -23,9 +23,9 @@ class LabelPoints extends THREE.Points {
         {
             this.HideMessage();
             var popup = document.getElementsByClassName("popupWindow")[0];
-            popup.setAttribute('style', 'visibility: show;');
+            // popup.setAttribute('style', 'visibility: show;');
             this.showingPopup = true;
-            alert(this.vertices);
+            // alert(this.vertices);
         }
     }
 
