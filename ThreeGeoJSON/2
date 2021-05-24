@@ -1,0 +1,46 @@
+   var lon = -16.5234375;
+            var lat = 48.80686346108517;
+            
+            var x = (Math.cos(lat * Math.PI / 180) * Math.cos(lon * Math.PI / 180) * 60);
+            var y = (Math.cos(lat * Math.PI / 180) * Math.sin(lon * Math.PI / 180) * 60);
+            var z = (Math.sin(lat * Math.PI / 180) * 60);
+
+            const vertices = [];
+            vertices.push( x, y, z);
+
+            var particle_geom = new THREE.BufferGeometry();
+            particle_geom.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
+
+            var particle_material = new THREE.PointsMaterial({color: 'red'});
+
+            var particle = new THREE.Points(particle_geom, particle_material, vertices);
+            container.add(particle);
+
+            // console.log(camera.position.x);
+            // console.log(camera.position.y);
+            // console.log(camera.position.z);
+
+            // console.log(particle.geometry.attributes.position.array[0]);
+            // console.log(particle.geometry.attributes.position.array[1]);
+            // console.log(particle.geometry.attributes.position.array[2]);
+            scene.updateMatrixWorld();
+            
+            particle.geometry.computeBoundingSphere();
+            var vector = particle.geometry.boundingSphere.center;
+
+            // console.log(vector);
+            // console.log(particle);
+            // console.log(particle);
+            camera.position.x = vector.x;
+            camera.position.y = vector.y;
+            camera.position.z = vector.z;
+
+            
+            // // camera.position.x = vector
+            
+         
+
+            //Нужно разместить камеру над опреледенной точкой
+            //Сначала нужно получить координаты это точки, потом сделать чтобы камера стала в этой же точке и поднять ее
+            //Камера должна быть направлена на эту же точку
+            

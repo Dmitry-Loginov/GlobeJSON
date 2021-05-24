@@ -7,11 +7,14 @@
       "geometry": {
         "name": "Оксордский университет",
         "image" : "oxford.jpg",
+        "popupIcon" : "background-image: url('./images/england.png');",
         "type": "Point",
         "coordinates": [
-          -1.2581384181976318,
-          51.759101415216016
-        ]
+          -16.5234375,
+          48.80686346108517
+        ],
+        "popupCity" : "Оксфорд",
+        "popupWindowText" : "К услугам студентов больше 300 кружков по интересам. Большое внимание в Оксфорде уделяется спорту, как престижному и полезному виду отдыха."
       }
     },
     {
@@ -24,7 +27,9 @@
         "coordinates": [
           0.11547446250915526,
           52.202619518122084
-        ]
+        ],
+        "popupCity" : "",
+        "popupWindowText" : ""
       }
     },
     {
@@ -37,7 +42,9 @@
         "coordinates": [
           -122.17032909393312,
           37.42751882891649
-        ]
+        ],
+        "popupCity" : "",
+        "popupWindowText" : ""
       }
     },
     {
@@ -50,7 +57,9 @@
         "coordinates": [
           -71.10349416732788,
           42.3367976196384
-        ]
+        ],
+        "popupCity" : "",
+        "popupWindowText" : ""
       }
     },
     {
@@ -63,7 +72,9 @@
         "coordinates": [
           -118.12542915344237,
           34.13717026779239
-        ]
+        ],
+        "popupCity" : "",
+        "popupWindowText" : ""
       }
     },
     {
@@ -76,7 +87,9 @@
         "coordinates": [
           -71.09416007995605,
           42.358892748470986
-        ]
+        ],
+        "popupCity" : "",
+        "popupWindowText" : ""
       }
     },
     {
@@ -89,7 +102,9 @@
         "coordinates": [
           -122.25858986377715,
           37.87203533128728
-        ]
+        ],
+        "popupCity" : "",
+        "popupWindowText" : ""
       }
     },
     {
@@ -102,7 +117,9 @@
         "coordinates": [
           -72.92235776782036,
           41.3164003679006
-        ]
+        ],
+        "popupCity" : "",
+        "popupWindowText" : ""
       }
     },
     {
@@ -115,7 +132,9 @@
         "coordinates": [
           -74.6552324295044,
           40.34306067027912
-        ]
+        ],
+        "popupCity" : "",
+        "popupWindowText" : ""
       }
     },
 	{
@@ -128,7 +147,9 @@
         "coordinates": [
           -87.59963750839232,
           41.79081678328433
-        ]
+        ],
+        "popupCity" : "",
+        "popupWindowText" : ""
       }
     }
   ]

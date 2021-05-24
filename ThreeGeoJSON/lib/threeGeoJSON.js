@@ -9,22 +9,39 @@ import * as THREE from "./three.module.js";
 import {clientx, clienty} from "./script.js";
 class LabelPoints extends THREE.Points {
 
-    constructor(geometry, material, message, image, vertices){
+    // constructor(geometry, material, message, image, vertices, popupIcon, popupCity,  popupWindowText){
+    //     super(geometry, material);
+    //     this.message = message;
+    //     this.image = image;
+    //     this.showingMessage = false;
+    //     this.showingPopup = false;
+    //     this.vertices = vertices;
+    //     this.popupIcon = popupIcon;
+    //     this.popupCity = popupCity;
+    //     this.popupWindowText = popupWindowText;
+    // }
+    constructor(geometry, material){
         super(geometry, material);
-        this.message = message;
-        this.image = image;
         this.showingMessage = false;
         this.showingPopup = false;
-        this.vertices = vertices;
+        this.message = null;
+        this.image = null;
+        this.showingMessage = null;
+        this.showingPopup = null;
+        this.vertices = null;
+        this.popupIcon = null;
+        this.popupCity = null;
+        this.popupWindowText = null;
     }
-    
+
     ShowPopup(){
         if(!this.showingPopup)
         {
             this.HideMessage();
             var popup = document.getElementsByClassName("popupWindow")[0];
-            popup.setAttribute('style', 'visibility: show;');
             this.showingPopup = true;
+            // $(".popupWindow")
+            popup.setAttribute('style', 'visibility: show;');
             // alert(this.vertices);
         }
     }
@@ -38,24 +55,61 @@ class LabelPoints extends THREE.Points {
     }
 
     ShowMessage() {
-        this.showingMessage = true;
         $(".popup").css({"left" : clientx, "top" : clienty-10});
         // alert(this.message);
         var popup = document.getElementById("myPopup");
         var img = "<img src=\"./images/" + this.image + "\" width=\"40px\" height=\"40px\" style=\"float: left; margin: 0px 0px 0px 5px;\">";
         popup.innerHTML = img + this.message;
         popup.classList.add("show");
+        this.showingMessage = true;
         // alert(this.showingMessage + " есть " + this.message);
     }
 
     HideMessage(){
-        this.showingMessage = false;
         var popup = document.getElementById("myPopup");
         popup.classList.remove("show");
+        this.showingMessage = false;
         // alert(this.showingMessage + " нет " + this.message);
 
     }
 }
+
+class LabelPointsBuilder{
+
+    constructor (geometry, material){
+        this.Label = new LabelPoints(geometry, material);
+    }
+
+    SetMessage(message){
+        this.Label.message = message;
+    }
+
+    SetPathToImage(path){
+        this.Label.image = path;
+    }
+
+    SetVertices(vertices){
+        this.Label.vertices = vertices;
+    }
+
+    SetPopupIcon(path){
+        this.Label.popupIcon = path;
+    }
+
+    SetPopupCity(name){
+        this.Label.popupCity = name;
+    }
+
+    SetPopupWindowText(text){
+        this.Label.popupWindowText = text;
+    }
+
+    ReturnLabelPoint(){
+        return this.Label;
+    }
+}
+
+
 
 export function drawThreeGeo(json, radius, shape, materalOptions, container) {
     container = container || window.scene;
@@ -274,8 +328,17 @@ export function drawThreeGeo(json, radius, shape, materalOptions, container) {
         var colors = ['red', 'white', 'orange', 'pink', 'yellow', 'cyan', 'brown', 'purple'];
         var particle_material = new THREE.PointsMaterial({color: colors[getRandomInt(8)]});
 
-        var particle = new LabelPoints(particle_geom, particle_material, json_geom[geom_num].name, json_geom[geom_num].image, vertices);
-        container.add(particle);
+        let particleBuilder = new LabelPointsBuilder(particle_geom, particle_material);
+
+        particleBuilder.SetMessage(json_geom[geom_num].name);
+        particleBuilder.SetPathToImage(json_geom[geom_num].image);
+        particleBuilder.SetVertices(vertices);
+        particleBuilder.SetPopupCity(json_geom[geom_num].popupCity);
+        particleBuilder.SetPopupIcon(json_geom[geom_num].popupIcon);
+        particleBuilder.SetPopupWindowText(json_geom[geom_num].popupWindowText);
+
+
+        container.add(particleBuilder.ReturnLabelPoint());
         clearArrays();
     }
 
