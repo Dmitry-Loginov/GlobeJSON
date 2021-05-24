@@ -32,6 +32,7 @@ class LabelPoints extends THREE.Points {
         this.popupIcon = null;
         this.popupCity = null;
         this.popupWindowText = null;
+        this.title = null;
     }
 
     ShowPopup(){
@@ -39,9 +40,13 @@ class LabelPoints extends THREE.Points {
         {
             this.HideMessage();
             var popup = document.getElementsByClassName("popupWindow")[0];
-            this.showingPopup = true;
-            // $(".popupWindow")
+            $(".popupWindow .header").css({"backgroundImage" : "url(\'./images/" + this.image + "\')"});
+            $(".popupTitle .popupText").text(this.message);
+            $(".popupTitle .popupCity").text(this.popupCity);
+            $(".popupTitle .popupIcon").css({"backgroundImage" : "url(\'./images/" + this.popupIcon + "\')"});
+            $(".popupWindow .popupWindowText").text(this.popupWindowText);
             popup.setAttribute('style', 'visibility: show;');
+            this.showingPopup = true;
             // alert(this.vertices);
         }
     }

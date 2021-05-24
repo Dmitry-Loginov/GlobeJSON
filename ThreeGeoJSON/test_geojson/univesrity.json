@@ -7,11 +7,11 @@
       "geometry": {
         "name": "Оксордский университет",
         "image" : "oxford.jpg",
-        "popupIcon" : "background-image: url('./images/england.png');",
+        "popupIcon" : "england.png",
         "type": "Point",
         "coordinates": [
-          -16.5234375,
-          48.80686346108517
+          -1.2581384181976318,
+          51.759101415216016
         ],
         "popupCity" : "Оксфорд",
         "popupWindowText" : "К услугам студентов больше 300 кружков по интересам. Большое внимание в Оксфорде уделяется спорту, как престижному и полезному виду отдыха."
@@ -23,12 +23,13 @@
       "geometry": {
         "name": "Университет в Кембридже, Англия",
         "image" : "kembridg.jpg",
+        "popupIcon" : "england.png",
         "type": "Point",
         "coordinates": [
           0.11547446250915526,
           52.202619518122084
         ],
-        "popupCity" : "",
+        "popupCity" : "Кембридж",
         "popupWindowText" : ""
       }
     },
@@ -38,12 +39,13 @@
       "geometry": {
         "name":"Стенфордский университет",
         "image" : "stenford.jpg",
+        "popupIcon" : "calif.png",
         "type": "Point",
         "coordinates": [
           -122.17032909393312,
           37.42751882891649
         ],
-        "popupCity" : "",
+        "popupCity" : "Пало-Алто",
         "popupWindowText" : ""
       }
     },
@@ -51,14 +53,15 @@
       "type": "Feature",
       "properties": {},
       "geometry": {
-        "name":"Гарвардский университет, Бостон",
+        "name":"Гарвардский университет",
         "image" : "harward.jpg",
+        "popupIcon" : "mass.png",
         "type": "Point",
         "coordinates": [
           -71.10349416732788,
           42.3367976196384
         ],
-        "popupCity" : "",
+        "popupCity" : "Бостон",
         "popupWindowText" : ""
       }
     },
@@ -68,12 +71,13 @@
       "geometry": {
         "name":"Калифорнийский технологический институт",
         "image" : "caltech.jpg",
+        "popupIcon" : "calif.png",
         "type": "Point",
         "coordinates": [
           -118.12542915344237,
           34.13717026779239
         ],
-        "popupCity" : "",
+        "popupCity" : "Пасадина",
         "popupWindowText" : ""
       }
     },
@@ -83,12 +87,13 @@
       "geometry": {
         "name":"Массачусетский технологический институт",
         "image" : "massatchusets.jpg",
+        "popupIcon" : "mass.png",
         "type": "Point",
         "coordinates": [
           -71.09416007995605,
           42.358892748470986
         ],
-        "popupCity" : "",
+        "popupCity" : "Кембридж",
         "popupWindowText" : ""
       }
     },
@@ -98,12 +103,13 @@
       "geometry": {
         "name": "Калифорнийский университет",
         "image" : "calberkli.jpg",
+        "popupIcon" : "calif.png",
         "type": "Point",
         "coordinates": [
           -122.25858986377715,
           37.87203533128728
         ],
-        "popupCity" : "",
+        "popupCity" : "Беркли",
         "popupWindowText" : ""
       }
     },
@@ -113,12 +119,13 @@
       "geometry": {
         "name": "Йельский университет",
         "image" : "yale.jpg",
+        "popupIcon" : "connecticut.png",
         "type": "Point",
         "coordinates": [
           -72.92235776782036,
           41.3164003679006
         ],
-        "popupCity" : "",
+        "popupCity" : "Нью-Хейвен",
         "popupWindowText" : ""
       }
     },
@@ -128,12 +135,13 @@
       "geometry": {
         "name": "Пристонский университет",
         "image" : "pricenton.jpg",
+        "popupIcon" : "newJersi.jpg",
         "type": "Point",
         "coordinates": [
           -74.6552324295044,
           40.34306067027912
         ],
-        "popupCity" : "",
+        "popupCity" : "Нью-Джерси",
         "popupWindowText" : ""
       }
     },
@@ -143,12 +151,13 @@
       "geometry": {
         "name": "Университет в Чикаго",
         "image" : "chikago.jpg",
+        "popupIcon" : "illinoys.jpg",
         "type": "Point",
         "coordinates": [
           -87.59963750839232,
           41.79081678328433
         ],
-        "popupCity" : "",
+        "popupCity" : "Чикаго",
         "popupWindowText" : ""
       }
     }

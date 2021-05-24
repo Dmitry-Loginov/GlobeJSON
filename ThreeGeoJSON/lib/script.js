@@ -178,3 +178,7 @@ renderer.render( scene, camera );
 
 animate();
 window.requestAnimationFrame(render);
+
+function SetSizeCanvas(){
+    
+}
