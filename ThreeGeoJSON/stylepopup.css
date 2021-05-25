@@ -41,9 +41,18 @@
     background-size: cover;
     background-position: center;
     position: absolute;
-    right: 10px;
+    left: 10px;
     top: 15px;
-    
+}
+#cross{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-image: url('./images/cross.png');
+    background-size: cover;
+
 }
 .popupWindowText{
     font-size: 0.7em;

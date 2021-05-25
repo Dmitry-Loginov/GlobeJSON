@@ -147,10 +147,20 @@ function onMouseMove( event ) {
 
 
 window.addEventListener( 'mousemove', onMouseMove, false );
-window.addEventListener('click', Click, false);
+document.getElementsByTagName("canvas")[0].addEventListener('click', ClickOutBlock, false);
+document.getElementById("block").addEventListener('click', ClickBlock,false); 
+document.getElementById("cross").addEventListener("click", ClickOutBlock, false);
 
-function Click(){
+function ClickOutBlock(){
+    Click(true);
+}
 
+function ClickBlock(){
+    Click();
+}
+
+
+function Click(cancel = false){
     raycaster.setFromCamera( mouse, camera );
     const intersects = raycaster.intersectObjects( container.children );
     // console.log(camera);
@@ -158,6 +168,7 @@ function Click(){
     try{
         if(popup == null){
             popup = intersects[0].object;
+            console.log(popup);
             intersects[0].object.ShowPopup();
             rotate = false;
         }
@@ -170,7 +181,7 @@ function Click(){
         
     }
     catch{
-        if(popup != null){
+        if(popup != null && cancel){
             popup.HidePopup();
             rotate = true;
         }
