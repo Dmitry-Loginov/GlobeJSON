@@ -156,11 +156,18 @@ function Click(){
     // console.log(camera);
     
     try{
-        popup = intersects[0].object;
-        if(!popup.showingPopup){
+        if(popup == null){
+            popup = intersects[0].object;
             intersects[0].object.ShowPopup();
             rotate = false;
         }
+        if(!popup.showingPopup){
+            popup = intersects[0].object;
+            intersects[0].object.ShowPopup();
+            rotate = false;
+        }
+        popup = intersects[0].object;
+        
     }
     catch{
         if(popup != null){
