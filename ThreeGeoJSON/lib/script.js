@@ -107,7 +107,11 @@ function render() {
     const intersects = raycaster.intersectObjects( container.children );
     try{
         if(!intersects[0].object.showingMessage){
-            intersects[0].object.ShowMessage();
+            if(popup != null)
+                if(!popup.showingPopup)
+                    intersects[0].object.ShowMessage();
+            if(popup == null)
+                intersects[0].object.ShowMessage();
             rotate = false;
             if(label != null)
                 label.object.showingMessage = false;
