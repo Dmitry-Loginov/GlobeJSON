@@ -6,9 +6,6 @@ import { drawThreeGeo } from "./threeGeoJSON.js";
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.5, 1000);
 
-const axesHelper = new THREE.AxesHelper( 40 );
-scene.add( axesHelper );
-
 export var clientx = 0;
 export var clienty = 0;
 export var showingMessage = false;
@@ -200,7 +197,3 @@ renderer.render( scene, camera );
 
 animate();
 window.requestAnimationFrame(render);
-
-function SetSizeCanvas(){
-    
-}
