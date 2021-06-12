@@ -8,6 +8,7 @@
         "name": "Оксордский университет",
         "image" : "oxford.jpg",
         "popupIcon" : "england.png",
+        "reference" : "./oxford.html",
         "type": "Point",
         "coordinates": [
           -1.2581384181976318,
@@ -24,6 +25,7 @@
         "name": "Университет в Кембридже, Англия",
         "image" : "kembridg.jpg",
         "popupIcon" : "england.png",
+        "reference" : "./cembridgeEnagland.html",
         "type": "Point",
         "coordinates": [
           0.11547446250915526,
@@ -40,6 +42,7 @@
         "name":"Стенфордский университет",
         "image" : "stenford.jpg",
         "popupIcon" : "calif.png",
+        "reference" : "./stenford.html",
         "type": "Point",
         "coordinates": [
           -122.17032909393312,
@@ -56,6 +59,7 @@
         "name":"Гарвардский университет",
         "image" : "harward.jpg",
         "popupIcon" : "mass.png",
+        "reference" : "./harward.html",
         "type": "Point",
         "coordinates": [
           -71.10349416732788,
@@ -72,6 +76,7 @@
         "name":"Калифорнийский технологический институт",
         "image" : "caltech.jpg",
         "popupIcon" : "calif.png",
+        "reference" : "./caltech.html",
         "type": "Point",
         "coordinates": [
           -118.12542915344237,
@@ -88,6 +93,7 @@
         "name":"Массачусетский технологический институт",
         "image" : "massatchusets.jpg",
         "popupIcon" : "mass.png",
+        "reference" : "./mit.html",
         "type": "Point",
         "coordinates": [
           -71.09416007995605,
@@ -104,6 +110,7 @@
         "name": "Калифорнийский университет",
         "image" : "calberkli.jpg",
         "popupIcon" : "calif.png",
+        "reference" : "./californ.html",
         "type": "Point",
         "coordinates": [
           -122.25858986377715,
@@ -120,6 +127,7 @@
         "name": "Йельский университет",
         "image" : "yale.jpg",
         "popupIcon" : "connecticut.png",
+        "reference" : "./yale.html",
         "type": "Point",
         "coordinates": [
           -72.92235776782036,
@@ -136,6 +144,7 @@
         "name": "Пристонский университет",
         "image" : "pricenton.jpg",
         "popupIcon" : "newJersi.jpg",
+        "reference" : "./pricestone.html",
         "type": "Point",
         "coordinates": [
           -74.6552324295044,
@@ -152,6 +161,7 @@
         "name": "Университет в Чикаго",
         "image" : "chikago.jpg",
         "popupIcon" : "illinoys.jpg",
+        "reference" : "./chikago.html",
         "type": "Point",
         "coordinates": [
           -87.59963750839232,

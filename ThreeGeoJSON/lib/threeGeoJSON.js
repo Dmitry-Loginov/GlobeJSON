@@ -7,6 +7,7 @@ and draws the geoJSON geometries.
 
 import * as THREE from "./three.module.js";
 import {clientx, clienty} from "./script.js";
+export var reference = null;
 class LabelPoints extends THREE.Points {
 
     // constructor(geometry, material, message, image, vertices, popupIcon, popupCity,  popupWindowText){
@@ -33,6 +34,7 @@ class LabelPoints extends THREE.Points {
         this.popupCity = null;
         this.popupWindowText = null;
         this.title = null;
+        this.reference = null;
     }
 
     ShowPopup(){
@@ -60,6 +62,7 @@ class LabelPoints extends THREE.Points {
     }
 
     ShowMessage() {
+        reference = this.reference;
         $(".popup").css({"left" : clientx, "top" : clienty-10});
         // alert(this.message);
         var popup = document.getElementById("myPopup");
@@ -107,6 +110,10 @@ class LabelPointsBuilder{
 
     SetPopupWindowText(text){
         this.Label.popupWindowText = text;
+    }
+
+    SetReference(reference){
+        this.Label.reference = reference;
     }
 
     ReturnLabelPoint(){
@@ -341,8 +348,7 @@ export function drawThreeGeo(json, radius, shape, materalOptions, container) {
         particleBuilder.SetPopupCity(json_geom[geom_num].popupCity);
         particleBuilder.SetPopupIcon(json_geom[geom_num].popupIcon);
         particleBuilder.SetPopupWindowText(json_geom[geom_num].popupWindowText);
-
-
+        particleBuilder.SetReference(json_geom[geom_num].reference);
         container.add(particleBuilder.ReturnLabelPoint());
         clearArrays();
     }

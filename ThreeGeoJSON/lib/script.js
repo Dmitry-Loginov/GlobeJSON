@@ -1,6 +1,6 @@
 import * as THREE from "./three.module.js";
 import { OrbitControls } from "./OrbitControls.js";
-import { drawThreeGeo } from "./threeGeoJSON.js";
+import { drawThreeGeo, reference } from "./threeGeoJSON.js";
 
 //New scene and camera
 var scene = new THREE.Scene();
@@ -106,9 +106,13 @@ function render() {
         if(!intersects[0].object.showingMessage){
             if(popup != null)
                 if(!popup.showingPopup)
-                    intersects[0].object.ShowMessage();
+                    {
+                        intersects[0].object.ShowMessage(); 
+                    }
             if(popup == null)
-                intersects[0].object.ShowMessage();
+                {
+                    intersects[0].object.ShowMessage();
+                }
             rotate = false;
             if(label != null)
                 label.object.showingMessage = false;
@@ -147,7 +151,8 @@ window.addEventListener( 'mousemove', onMouseMove, false );
 document.getElementsByTagName("canvas")[0].addEventListener('click', ClickOutBlock, false);
 document.getElementById("block").addEventListener('click', ClickBlock,false); 
 document.getElementById("cross").addEventListener("click", ClickOutBlock, false);
-
+document.getElementById("block").addEventListener("click", OpenDocument, false);
+var isCross = false;
 function ClickOutBlock(){
     Click(true);
 }
@@ -156,6 +161,9 @@ function ClickBlock(){
     Click();
 }
 
+function OpenDocument(){
+    if(!isCross)window.open(reference);
+}
 
 function Click(cancel = false){
     raycaster.setFromCamera( mouse, camera );
@@ -165,20 +173,22 @@ function Click(cancel = false){
     try{
         if(popup == null){
             popup = intersects[0].object;
-            console.log(popup);
             intersects[0].object.ShowPopup();
             rotate = false;
+            isCross = false;
         }
         if(!popup.showingPopup){
             popup = intersects[0].object;
             intersects[0].object.ShowPopup();
             rotate = false;
+            isCross = false;
         }
         popup = intersects[0].object;
         
     }
     catch{
         if(popup != null && cancel){
+            isCross = true;
             popup.HidePopup();
             rotate = true;
         }
